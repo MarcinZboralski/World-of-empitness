@@ -10,7 +10,7 @@ public class MouseLook
     [Range(1f,15f)]
     public float smoothTime = 5f;
 
-    public Transform camera;
+    public Camera camera;
 
     private Quaternion m_CharacterTargetRot;
     private Quaternion m_CameraTargetRot;
@@ -18,7 +18,8 @@ public class MouseLook
     public void Init(Transform character)
     {
         m_CharacterTargetRot = character.localRotation;
-        m_CameraTargetRot = camera.localRotation;
+        m_CameraTargetRot = camera.transform.localRotation;
+        Bilboard.SetCamera(camera);
     }
 
 
@@ -33,7 +34,7 @@ public class MouseLook
         m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
 
         character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,smoothTime * Time.deltaTime);
-        camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,smoothTime * Time.deltaTime);
+        camera.transform.localRotation = Quaternion.Slerp(camera.transform.localRotation, m_CameraTargetRot,smoothTime * Time.deltaTime);
 
         //camera.localRotation = m_CameraTargetRot;
         //character.localRotation = m_CharacterTargetRot;
