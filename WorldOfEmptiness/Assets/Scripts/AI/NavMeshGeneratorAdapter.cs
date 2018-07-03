@@ -10,6 +10,8 @@ public class NavMeshGeneratorAdapter : NavMeshAdapter
 {
     private NavMeshSurface navMeshSurface;
 
+    public static bool isDone;
+
     void Awake()
     {
         navMeshSurface = GetComponent<NavMeshSurface>();
@@ -18,5 +20,6 @@ public class NavMeshGeneratorAdapter : NavMeshAdapter
     public override void Generate(Dungeon dungeon)
     {
         navMeshSurface.BuildNavMesh();
+        isDone = true;
     }
 }

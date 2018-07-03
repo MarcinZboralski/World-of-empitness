@@ -6,11 +6,17 @@ using UnityEngine.AI;
 public class BaseAI : MonoBehaviour,AIAniamtor
 {
     public AISettings AISettings;
-    public float VievSphereSize;
 
     protected NavMeshAgent Agent;
 
-    public float distanceToTarget;
+    private float VievSphereSize;
+    private float distanceToTarget;
+
+
+    public float DistanceToTarget
+    {
+        get { return distanceToTarget; }
+    }
 
     private void Awake()
     {
@@ -33,6 +39,9 @@ public class BaseAI : MonoBehaviour,AIAniamtor
 
     protected void Move(Vector3 Target)
     {
+        if(NavMeshGeneratorAdapter.isDone != true)return; 
+
+
         distanceToTarget = Vector3.Distance(Target, transform.position);
 
         if (distanceToTarget >= AISettings.StopDistance)

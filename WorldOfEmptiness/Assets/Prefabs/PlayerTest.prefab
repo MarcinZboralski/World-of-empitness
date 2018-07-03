@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 20697934043255408}
   - component: {fileID: 124862338146048340}
   - component: {fileID: 81630593246091826}
+  - component: {fileID: 95828550746597700}
+  - component: {fileID: 114353869638543440}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -54,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379196095329146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4647247580541322}
@@ -90,8 +92,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 300
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -212,6 +214,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95828550746597700
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476567287870158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114353869638543440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476567287870158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a448bd631279e2d4c8c94b7a7e97776c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleCulling: 0
+  GizmoDistance: 10
+  GizmoMaterial: {fileID: 0}
+  CullInEditor: 0
+  CullShadows: 1
+  cullingProxy: {fileID: 0}
+  NumWorkerThreads: 0
 --- !u!114 &114727522150809370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WalkSpeed: 7.6
-  jumpSpeed: 5
+  jumpSpeed: 8.45
   m_StickToGroundForce: 7
   m_GravityMultiplier: 2
   m_RunstepLenghten: 0.1
