@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace AI
@@ -6,10 +7,15 @@ namespace AI
     public class BaseAI : MonoBehaviour,AIAniamtor
     {
         public AISettings AISettings;
+        public AIStatistic AIStatistic;
 
         protected NavMeshAgent Agent;
 
         private float distanceToTarget;
+        private bool isAttack = false;
+        private bool isHited = false;
+        private float timeHit;
+        private float timeToAttack;
 
 
         public float DistanceToTarget
@@ -41,11 +47,55 @@ namespace AI
 
             distanceToTarget = Vector3.Distance(Target, transform.position);
 
-            if (distanceToTarget >= AISettings.StopDistance)
-            {
-                Agent.SetDestination(Target);
-            }
 
+
+            switch (AISettings.AiType)
+            {
+                case AIType.Melee:
+
+                    if (isHited == false)
+                    {
+                        Agent.isStopped = false;
+                        if (distanceToTarget >= AISettings.StopDistance)
+                        {
+                            SetAnimatror(true,false,false,false);
+                            Agent.SetDestination(Target);
+                        }
+                        else if(float.IsInfinity(Agent.remainingDistance) == false && isAttack == false)
+                        {
+                            isAttack = true;
+                            Attack();
+                        }
+                    }
+                    else
+                    {
+                        Agent.isStopped = true;
+                    }
+                        
+
+                    break;
+                case AIType.Ranged:
+                    break;
+                case AIType.MeleeAndRanged:
+                    break;
+            }
+           
+
+
+
+        }
+
+        private void Attack()
+        {
+            SetAnimatror(false,true,false,false);
+
+            isAttack = false;
+        }
+
+        public void GetHit()
+        {
+            isHited = true;
+            SetAnimatror(false,false,false,true);
         }
 
         private void OnDrawGizmos()
@@ -58,9 +108,22 @@ namespace AI
         
         }
 
+        public void ResetAniamtorAndStates()
+        {
+            SetAnimatror(false,false,false,false);
+            isAttack = false;
+            isHited = false;
+            timeHit = 0;
+            timeToAttack = 0;
+        }
+
         public void ResetAnimator()
         {
         
         }
     }
+
+    [Serializable]
+    public struct AIStatistic { }
+
 }

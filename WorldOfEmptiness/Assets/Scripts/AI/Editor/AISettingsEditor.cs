@@ -29,20 +29,29 @@ namespace AI.Editor
             }
             NavMeshComponentsGUIUtility.AgentTypePopup("Agent Type", agentType);
             ShowInfo(Target);
+            ObjectFields(Target);
         }
 
         private void ShowInfo(AISettings settings)
         {
+           
             var bs = NavMesh.GetSettingsByID(agentType.intValue);
+            settings.CalculateStopingDistance(bs.agentRadius);
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("AI Informations");
+            GUILayout.Label("AI Informations", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("Radius: " + bs.agentRadius);
             EditorGUILayout.LabelField("Height: " + bs.agentHeight);
             EditorGUILayout.LabelField("Max Slope: " + bs.agentSlope);
             EditorGUILayout.LabelField("Step Height: " + bs.agentClimb);
             EditorGUILayout.Space();
+            GUILayout.Label("AI Base Statistic", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("AI Stop Distance: " + settings.StopDistance);
             EditorGUILayout.LabelField("AI Maximum Speed: " + settings.AgentMaxSpeed);
+
+        }
+
+        private void ObjectFields(AISettings settings)
+        {
 
         }
     }

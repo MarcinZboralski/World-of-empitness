@@ -37,13 +37,13 @@ namespace AI
 
             if (StopDistance <= 0)
             {
-                StopDistance = CalculateStopingDistance(agent);
+                StopDistance = CalculateStopingDistance(agent.radius);
             }
         }
 
-        public float CalculateStopingDistance(NavMeshAgent agent)
+        public float CalculateStopingDistance(float agentRadius)
         {
-            return agent.radius * 2.5f + 0.3f;
+            return agentRadius * 2.5f + 0.3f;
         }
 
     }
