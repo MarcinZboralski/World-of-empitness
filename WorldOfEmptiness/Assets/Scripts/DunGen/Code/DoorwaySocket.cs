@@ -23,7 +23,7 @@ namespace DunGen
 	{
         Default,
         Large,
-        Vertical
+        Vertical,
 	}
 
     /// <summary>

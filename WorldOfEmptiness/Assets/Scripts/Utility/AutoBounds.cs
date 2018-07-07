@@ -12,6 +12,7 @@ public sealed class AutoBounds : MonoBehaviour
     {
         if (useDebug)
         {
+            Gizmos.color = new Color(0f, 1f, 0.22f);
             Gizmos.DrawCube(UnityUtil.CalculateObjectBounds(gameObject,false,false,false).center,UnityUtil.CalculateObjectBounds(gameObject,false,false,false).size);
         }
     }
