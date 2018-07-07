@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using DunGen;
+﻿using DunGen;
 using UnityEngine;
 
-public sealed class AutoBounds : MonoBehaviour
-{
-    public bool useDebug;
-
-    private void OnDrawGizmos()
+    public sealed class AutoBounds : MonoBehaviour
     {
-        if (useDebug)
+        public static bool GizmosVisible;
+        public static Color GizmosColor;
+
+        private void OnDrawGizmos()
         {
-            Gizmos.color = new Color(0f, 1f, 0.22f);
-            Gizmos.DrawCube(UnityUtil.CalculateObjectBounds(gameObject,false,false,false).center,UnityUtil.CalculateObjectBounds(gameObject,false,false,false).size);
+            if (GizmosVisible)
+            {
+                Gizmos.color = GizmosColor;
+                Gizmos.DrawCube(UnityUtil.CalculateObjectBounds(gameObject,false,false,false).center,UnityUtil.CalculateObjectBounds(gameObject,false,false,false).size);
+            }
         }
     }
-}
+
