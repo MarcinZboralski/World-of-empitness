@@ -6,8 +6,13 @@ using UnityEngine;
 
 public sealed class AutoBounds : MonoBehaviour
 {
+    public bool useDebug;
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position,UnityUtil.CalculateObjectBounds(gameObject,false,false,false).size);
+        if (useDebug)
+        {
+            Gizmos.DrawCube(UnityUtil.CalculateObjectBounds(gameObject,false,false,false).center,UnityUtil.CalculateObjectBounds(gameObject,false,false,false).size);
+        }
     }
 }
