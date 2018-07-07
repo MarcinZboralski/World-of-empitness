@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 5bb61be5fcdc70443a197c32faf5667b
+labels:
+- map
+- random
+- boss
+- labyrinth
+- generator
+- maze
+- dungeoncrawler
+- roguelike
+- rogue
+- tile
+- dungen
+- room
+- layout
+- dungeon
+- proceduralgeneration
+- generation
+- procedural
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

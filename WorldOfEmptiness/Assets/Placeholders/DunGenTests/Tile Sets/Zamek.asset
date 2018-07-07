@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4db6514a2e4e194bbd1c6bdae54f388, type: 3}
-  m_Name: Castle Tiles
+  m_Name: Zamek
   m_EditorClassIdentifier: 
   TileWeights:
     Weights:
-    - Value: {fileID: 100028, guid: ea64cf1dae0f7294b97ad33a6d02dc31, type: 2}
+    - Value: {fileID: 100044, guid: f8103e5f64ba8984f85ac333f5a370e1, type: 2}
       MainPathWeight: 1
       BranchPathWeight: 1
       UseDepthScale: 1
@@ -41,8 +41,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      TileSet: {fileID: 0}
-    - Value: {fileID: 100046, guid: c085cbefb79f47f408870b10ffeddaea, type: 2}
+      TileSet: {fileID: 11400000}
+    - Value: {fileID: 100046, guid: 690a16cfd4154544dbb7861ca9c00fe9, type: 2}
       MainPathWeight: 1
       BranchPathWeight: 1
       UseDepthScale: 1
@@ -70,8 +70,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      TileSet: {fileID: 0}
-    - Value: {fileID: 100062, guid: 0038d4b2a0a21c64199e7305302d1dc8, type: 2}
+      TileSet: {fileID: 11400000}
+    - Value: {fileID: 100070, guid: ba249c7a9b985be4786ccd80399dcaaa, type: 2}
       MainPathWeight: 1
       BranchPathWeight: 1
       UseDepthScale: 1
@@ -99,8 +99,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      TileSet: {fileID: 0}
-    - Value: {fileID: 100004, guid: 624411d0ce56b0044926fa2cf269ba96, type: 2}
+      TileSet: {fileID: 11400000}
+    - Value: {fileID: 100006, guid: bf8502ae4613e114f983b403336d3f26, type: 2}
       MainPathWeight: 1
       BranchPathWeight: 1
       UseDepthScale: 1
@@ -128,7 +128,36 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      TileSet: {fileID: 0}
+      TileSet: {fileID: 11400000}
+    - Value: {fileID: 100046, guid: dc248f4a0a07ba748ba10b3542079c53, type: 2}
+      MainPathWeight: 1
+      BranchPathWeight: 1
+      UseDepthScale: 1
+      DepthWeightScale:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TileSet: {fileID: 11400000}
   LockPrefabs:
   - SocketGroup: 0
     LockPrefabs:

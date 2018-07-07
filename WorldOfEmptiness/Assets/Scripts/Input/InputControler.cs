@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputControler : MonoBehaviour
 {
 	List<KeyCode> myKeys = new List<KeyCode>();
-	string debuglogInfo = "User pressed: ";
+	const string debuglogInfo = "User pressed: ";
 	void Start()
 	{
 		#region WSAD

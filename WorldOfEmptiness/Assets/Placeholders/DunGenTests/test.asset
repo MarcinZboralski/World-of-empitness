@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e228b45736a8cf4ea000616e628a4dd, type: 3}
-  m_Name: Demo Dungeon
+  m_Name: test
   m_EditorClassIdentifier: 
   Length:
     Min: 10
@@ -75,25 +75,7 @@ MonoBehaviour:
     TileSets:
     - {fileID: 11400000, guid: 0ed294a566ed0214098259a8da3071fa, type: 2}
     NodeType: 0
-    Position: 0.5412371
-    Label: Pustkowia
-    Keys: []
-    Locks: []
-    LockPlacement: 0
-  - Graph: {fileID: 11400000}
-    TileSets:
-    - {fileID: 11400000, guid: 0ed294a566ed0214098259a8da3071fa, type: 2}
-    NodeType: 0
-    Position: 0.18703976
-    Label: Zamek
-    Keys: []
-    Locks: []
-    LockPlacement: 0
-  - Graph: {fileID: 11400000}
-    TileSets:
-    - {fileID: 11400000, guid: 0ed294a566ed0214098259a8da3071fa, type: 2}
-    NodeType: 0
-    Position: 0.055896387
+    Position: 0.061349694
     Label: "Wi\u0119zienie"
     Keys: []
     Locks: []
@@ -102,36 +84,15 @@ MonoBehaviour:
   - Graph: {fileID: 11400000}
     DungeonArchetypes:
     - {fileID: 11400000, guid: 143f069e9daf5c649963416894858348, type: 2}
-    Position: 0
-    Length: 0.10751104
-    Keys:
-    - ID: 1
-      Range:
-        Min: 0
-        Max: 1
-    Locks:
-    - ID: 1
-      Range:
-        Min: 0
-        Max: 1
-  - Graph: {fileID: 11400000}
-    DungeonArchetypes:
     - {fileID: 11400000, guid: f78d6b5f8940bb54ab0c30f13081521f, type: 2}
-    Position: 0.10751104
-    Length: 0.17893961
-    Keys: []
-    Locks: []
-  - Graph: {fileID: 11400000}
-    DungeonArchetypes:
-    - {fileID: 11400000, guid: c429cf2ebd5e08c45a24babec43451a1, type: 2}
-    Position: 0.28645065
-    Length: 0.47864506
+    Position: 0
+    Length: 0.32992503
     Keys: []
     Locks: []
   - Graph: {fileID: 11400000}
     DungeonArchetypes:
     - {fileID: 11400000, guid: 7403cc05dbd85f649924b519b990ffb8, type: 2}
-    Position: 0.7650957
-    Length: 0.23490429
+    Position: 0.32992503
+    Length: 0.67007494
     Keys: []
     Locks: []
