@@ -319,16 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e22fe3170f6e6040aa3b3395b87faf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AISettings:
-    AiType: 0
-    Name: 
-    Radius: 0.7
-    Height: 2
-    MaxSlope: 0
-    Target: {fileID: 1733896841}
-    AgentMaxSpeed: 0
-  VievSphereSize: 15
-  distanceToTarget: 0
+  AISettings: {fileID: 11400000, guid: 8f97ac67db98b8749bae2c9fb254e399, type: 2}
 --- !u!136 &321844405
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -762,11 +753,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96402414adc132c459d7c888a3439ffe, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1733896841 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4620848184300330, guid: 96402414adc132c459d7c888a3439ffe,
-    type: 2}
-  m_PrefabInternal: {fileID: 1678145687}
 --- !u!1 &2143230092
 GameObject:
   m_ObjectHideFlags: 0
