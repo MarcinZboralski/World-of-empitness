@@ -1,70 +1,66 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class BaseAI : MonoBehaviour,AIAniamtor
+namespace AI
 {
-    public AISettings AISettings;
-
-    protected NavMeshAgent Agent;
-
-    private float VievSphereSize;
-    private float distanceToTarget;
-
-
-    public float DistanceToTarget
+    public class BaseAI : MonoBehaviour,AIAniamtor
     {
-        get { return distanceToTarget; }
-    }
+        public AISettings AISettings;
 
-    private void Awake()
-    {
-        Agent = GetComponent<NavMeshAgent>();
-        AISettings.Init(Agent);
-        Init();
-    }
+        protected NavMeshAgent Agent;
 
-    public virtual void Init()
-    {
-        Agent.height = AISettings.Height;
-        Agent.radius = AISettings.Radius;
-        Agent.stoppingDistance = AISettings.StopDistance;
-    }
-
-    private void Update()
-    {
-        Move(AISettings.Target.position);
-    }
-
-    protected void Move(Vector3 Target)
-    {
-        if(NavMeshGeneratorAdapter.isDone != true)return; 
+        private float distanceToTarget;
 
 
-        distanceToTarget = Vector3.Distance(Target, transform.position);
-
-        if (distanceToTarget >= AISettings.StopDistance)
+        public float DistanceToTarget
         {
-            Agent.SetDestination(Target);
+            get { return distanceToTarget; }
         }
 
-    }
+        private void Awake()
+        {
+            Agent = GetComponent<NavMeshAgent>();
+            AISettings.Init(Agent);
+            Init();
+        }
 
-    private void OnDrawGizmos()
-    {
+        public virtual void Init()
+        {
+            Agent.stoppingDistance = AISettings.StopDistance;
+        }
 
-       // Gizmos.color = new Color(0f, 0.05f, 1f);
-       // Gizmos.DrawWireSphere(transform.position,VievSphereSize);
-    }
+        private void Update()
+        {
+            Move(AISettings.Target.position);
+        }
 
-    public void SetAnimatror(bool walk, bool attack, bool death, bool hit)
-    {
+        protected void Move(Vector3 Target)
+        {
+            if(NavMeshGeneratorAdapter.IsDone != true)return; 
+
+
+            distanceToTarget = Vector3.Distance(Target, transform.position);
+
+            if (distanceToTarget >= AISettings.StopDistance)
+            {
+                Agent.SetDestination(Target);
+            }
+
+        }
+
+        private void OnDrawGizmos()
+        {
+
+        }
+
+        public void SetAnimatror(bool walk, bool attack, bool death, bool hit)
+        {
         
-    }
+        }
 
-    public void ResetAnimator()
-    {
+        public void ResetAnimator()
+        {
         
+        }
     }
 }

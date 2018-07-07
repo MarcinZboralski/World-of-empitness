@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AI;
 using UnityEngine;
 using DunGen.Adapters;
 
 namespace DunGen
 {
     [AddComponentMenu("DunGen/Runtime Dungeon")]
+    [RequireComponent(typeof(NavMeshGeneratorAdapter))]
 	public class RuntimeDungeon : MonoBehaviour
 	{
         public DungeonGenerator Generator = new DungeonGenerator();
