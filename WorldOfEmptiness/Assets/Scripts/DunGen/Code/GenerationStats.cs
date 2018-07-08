@@ -79,23 +79,21 @@ namespace DunGen
 
 		public GenerationStats Clone()
 		{
-		    GenerationStats newStats = new GenerationStats
-		    {
-		        MainPathRoomCount = MainPathRoomCount,
-		        BranchPathRoomCount = BranchPathRoomCount,
-		        TotalRoomCount = TotalRoomCount,
-		        MaxBranchDepth = MaxBranchDepth,
-		        TotalRetries = TotalRetries,
-		        PreProcessTime = PreProcessTime,
-		        MainPathGenerationTime = MainPathGenerationTime,
-		        BranchPathGenerationTime = BranchPathGenerationTime,
-		        PostProcessTime = PostProcessTime,
-		        TotalTime = TotalTime
-		    };
+			GenerationStats newStats = new GenerationStats();
 
+			newStats.MainPathRoomCount = MainPathRoomCount;
+			newStats.BranchPathRoomCount = BranchPathRoomCount;
+			newStats.TotalRoomCount = TotalRoomCount;
+			newStats.MaxBranchDepth = MaxBranchDepth;
+			newStats.TotalRetries = TotalRetries;
 
+			newStats.PreProcessTime = PreProcessTime;
+			newStats.MainPathGenerationTime = MainPathGenerationTime;
+			newStats.BranchPathGenerationTime = BranchPathGenerationTime;
+			newStats.PostProcessTime = PostProcessTime;
+			newStats.TotalTime = TotalTime;
 
-		    return newStats;
+			return newStats;
 		}
 	}
 }

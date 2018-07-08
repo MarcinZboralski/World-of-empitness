@@ -11,7 +11,7 @@ public class Bilboard : MonoBehaviour
 
     private void Start()
     {
-        if (targetCamera != null)
+        if (targetCamera == null)
         {
             targetCamera = Camera.main;
         }
