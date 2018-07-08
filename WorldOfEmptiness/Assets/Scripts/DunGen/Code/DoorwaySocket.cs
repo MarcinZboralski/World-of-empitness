@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace DunGen
 {
@@ -24,10 +23,6 @@ namespace DunGen
         Default,
         Large,
         Vertical,
-		Zz_Special1,
-		Zz_Special2,
-		Zz_Special3,
-		Zz_Special4,
 	}
 
     /// <summary>
