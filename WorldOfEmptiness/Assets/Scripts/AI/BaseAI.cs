@@ -4,13 +4,13 @@ using UnityEngine.AI;
 
 namespace AI
 {
-    public class BaseAI : MonoBehaviour,AIAniamtor
+    [Serializable]
+    public class BaseAI : MonoBehaviour, AIAniamtor
     {
         public AISettings AISettings;
         public AIStatistic AIStatistic;
 
-        protected NavMeshAgent Agent;
-
+        private NavMeshAgent Agent;
         private float distanceToTarget;
         private bool isAttack = false;
         private bool isHited = false;
@@ -21,6 +21,21 @@ namespace AI
         public float DistanceToTarget
         {
             get { return distanceToTarget; }
+        }
+
+        public bool IsWalking
+        {
+            get { return Agent.isStopped; }
+        }
+
+        public bool IsAttack
+        {
+            get { return isAttack; }
+        }
+
+        public bool IsHited
+        {
+            get { return isHited; }
         }
 
         private void Awake()
@@ -38,16 +53,14 @@ namespace AI
         private void Update()
         {
             Move(AISettings.Target.position);
+
         }
 
         protected void Move(Vector3 Target)
         {
-            if(NavMeshGeneratorAdapter.IsDone != true)return; 
-
+            if (NavMeshGeneratorAdapter.IsDone == false) return;
 
             distanceToTarget = Vector3.Distance(Target, transform.position);
-
-
 
             switch (AISettings.AiType)
             {
@@ -58,20 +71,36 @@ namespace AI
                         Agent.isStopped = false;
                         if (distanceToTarget >= AISettings.StopDistance)
                         {
-                            SetAnimatror(true,false,false,false);
+                            SetAnimatror(true, false, false, false);
                             Agent.SetDestination(Target);
                         }
-                        else if(float.IsInfinity(Agent.remainingDistance) == false && isAttack == false)
+                        else if (isAttack == false && timeToAttack > 0 && Agent.remainingDistance <= distanceToTarget)
                         {
-                            isAttack = true;
-                            Attack();
+                            SetAnimatror(false, true, false, false);
+                            Agent.isStopped = true;
+                            timeToAttack -= Time.smoothDeltaTime;
+                            if (isAttack == false && timeToAttack <= 0)
+                            {
+                                Attack();
+                            }
+
                         }
                     }
                     else
                     {
                         Agent.isStopped = true;
+                        if (timeHit > 0)
+                        {
+                            timeHit -= Time.smoothDeltaTime;
+                        }
+
+                        if (timeHit <= 0)
+                        {
+                            EndHit();
+                        }
+
                     }
-                        
+
 
                     break;
                 case AIType.Ranged:
@@ -79,23 +108,45 @@ namespace AI
                 case AIType.MeleeAndRanged:
                     break;
             }
-           
-
-
 
         }
 
         private void Attack()
         {
-            SetAnimatror(false,true,false,false);
+            if (isAttack == false)
+            {
+                switch (AISettings.AiType)
+                {
+                    case AIType.Melee:
 
-            isAttack = false;
+                        break;
+                    case AIType.Ranged:
+
+                        break;
+                    case AIType.MeleeAndRanged:
+
+                        break;
+                }
+                isAttack = true;
+                Agent.isStopped = false;
+            }
         }
 
         public void GetHit()
         {
-            isHited = true;
-            SetAnimatror(false,false,false,true);
+            if (isHited == false)
+            {
+                isHited = true;
+                SetAnimatror(false, false, false, true);
+            }
+        }
+
+        private void EndHit()
+        {
+            if (isHited)
+            {
+                isHited = false;
+            }
         }
 
         private void OnDrawGizmos()
@@ -105,12 +156,17 @@ namespace AI
 
         public void SetAnimatror(bool walk, bool attack, bool death, bool hit)
         {
-        
+
         }
 
-        public void ResetAniamtorAndStates()
+        public void ResetAniamtor()
         {
-            SetAnimatror(false,false,false,false);
+            SetAnimatror(false, false, false, false);
+        }
+
+        public void ResetStates()
+        {
+            Agent.isStopped = false;
             isAttack = false;
             isHited = false;
             timeHit = 0;
@@ -119,11 +175,15 @@ namespace AI
 
         public void ResetAnimator()
         {
-        
+
         }
+
     }
 
+
     [Serializable]
-    public struct AIStatistic { }
+    public struct AIStatistic
+    {
+    }
 
 }

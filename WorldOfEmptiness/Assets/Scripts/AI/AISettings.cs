@@ -14,13 +14,16 @@ namespace AI
         public float AgentMaxSpeed;
         [NonSerialized] public float StopDistance;
 
-        public AISettings(AIType aiType, string name, int agentTypeID, Transform target, float agentMaxSpeed)
+        public AIStatistic AiStatistic;
+
+        public AISettings(AIType aiType, string name, int agentTypeID, Transform target, float agentMaxSpeed, AIStatistic aiStatistic)
         {
             AiType = aiType;
             Name = name;
             this.agentTypeID = agentTypeID;
             Target = target;
             AgentMaxSpeed = agentMaxSpeed;
+            AiStatistic = aiStatistic;
         }
 
         public void Init(NavMeshAgent agent)

@@ -10,6 +10,5 @@
     public interface AIAniamtor
     {
         void SetAnimatror(bool walk, bool attack, bool death, bool hit);
-        void ResetAnimator();
     }
 }
