@@ -23,6 +23,13 @@ namespace DunGen
         Default,
         Large,
         Vertical,
+		Zz_Special1,
+		Zz_Special2,
+		Zz_Special3,
+		Zz_Special4,
+		Zz_Special5,
+		Zz_Special6,
+		Zz_Special7,
 	}
 
     /// <summary>
