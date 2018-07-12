@@ -13,7 +13,6 @@ namespace AI
         public Transform Target;
         public float AgentMaxSpeed;
         [NonSerialized] public float StopDistance;
-        [NonSerialized] public NavMeshAgent Agent;
 
         public AIStatistic AiStatistic;
 
@@ -29,20 +28,19 @@ namespace AI
 
         public void Init(NavMeshAgent agent)
         {
-            Agent = agent;
             if (Name == null)
             {
-                Name = Agent.name;
+                Name = agent.name;
             }
 
             if (AgentMaxSpeed < 0)
             {
-                AgentMaxSpeed = Agent.speed;
+                AgentMaxSpeed = agent.speed;
             }
 
             if (StopDistance <= 0)
             {
-                StopDistance = CalculateStopingDistance(Agent.radius);
+                StopDistance = CalculateStopingDistance(agent.radius);
             }
         }
 
