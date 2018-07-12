@@ -844,7 +844,7 @@ public class SECTR_Member : MonoBehaviour
 				{
 					// Filter particle systems out of Sectors as their bounds are simply too unreliable.
 					System.Type renderType = childRenderer.GetType();
-					if(renderType == typeof(ParticleSystemRenderer) || renderType == typeof(ParticleRenderer))
+					if(renderType == typeof(ParticleSystemRenderer) || renderType == typeof(ParticleSystemRenderer))
 					{
 						includeBounds = false;
 					}

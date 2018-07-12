@@ -29,7 +29,7 @@ namespace AI.Editor
             }
             NavMeshComponentsGUIUtility.AgentTypePopup("Agent Type", agentType);
             ShowInfo(Target);
-            ObjectFields(Target);
+            ObjectFields(Target,bs);
         }
 
         private void ShowInfo(AISettings settings)
@@ -47,12 +47,17 @@ namespace AI.Editor
             GUILayout.Label("AI Base Statistic", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("AI Stop Distance: " + settings.StopDistance);
             EditorGUILayout.LabelField("AI Maximum Speed: " + settings.AgentMaxSpeed);
-
+            EditorGUILayout.LabelField("AI Target Name: " + settings.Target.name);
+            GUILayout.Label("AI Statistic Objects Fileds", EditorStyles.boldLabel);
         }
 
-        private void ObjectFields(AISettings settings)
+        private void ObjectFields(AISettings settings,NavMeshBuildSettings agentSettings)
         {
-
+            
+            settings.StopDistance = settings.CalculateStopingDistance(agentSettings.agentRadius);
+            settings.AgentMaxSpeed = EditorGUILayout.FloatField( "Agent Max Speed",settings.AgentMaxSpeed);
+            settings.Target = EditorGUILayout.ObjectField("Target Player",settings.Target,typeof(Transform),false) as Transform;
+            
         }
     }
 }
