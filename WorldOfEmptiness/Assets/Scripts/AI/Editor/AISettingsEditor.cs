@@ -36,7 +36,7 @@ namespace AI.Editor
         {
            
             var bs = NavMesh.GetSettingsByID(agentType.intValue);
-            settings.CalculateStopingDistance(bs.agentRadius);
+           // settings.CalculateStopingDistance(bs.agentRadius);
             EditorGUILayout.Space();
             GUILayout.Label("AI Informations", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("Radius: " + bs.agentRadius);
@@ -46,7 +46,7 @@ namespace AI.Editor
             EditorGUILayout.Space();
             GUILayout.Label("AI Base Statistic", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("AI Stop Distance: " + settings.StopDistance);
-            EditorGUILayout.LabelField("AI Maximum Speed: " + settings.AgentMaxSpeed);
+           // EditorGUILayout.LabelField("AI Maximum Speed: " + settings.AgentMaxSpeed);
 
         }
 

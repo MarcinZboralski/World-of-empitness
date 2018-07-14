@@ -11,43 +11,29 @@ namespace AI
         public string Name;
         public int agentTypeID;
         public Transform Target;
-        public float AgentMaxSpeed;
+
         [NonSerialized] public float StopDistance;
 
         public AIStatistic AiStatistic;
 
-        public AISettings(AIType aiType, string name, int agentTypeID, Transform target, float agentMaxSpeed, AIStatistic aiStatistic)
+        public AISettings(AIType aiType, string name, int agentTypeID, Transform target, AIStatistic aiStatistic)
         {
             AiType = aiType;
             Name = name;
             this.agentTypeID = agentTypeID;
             Target = target;
-            AgentMaxSpeed = agentMaxSpeed;
             AiStatistic = aiStatistic;
         }
 
         public void Init(NavMeshAgent agent)
         {
-            if (Name == null)
-            {
-                Name = agent.name;
-            }
-
-            if (AgentMaxSpeed < 0)
-            {
-                AgentMaxSpeed = agent.speed;
-            }
-
-            if (StopDistance <= 0)
-            {
-                StopDistance = CalculateStopingDistance(agent.radius);
-            }
+    
         }
 
-        public float CalculateStopingDistance(float agentRadius)
-        {
-            return agentRadius * 2.5f + 0.3f;
-        }
+        //public float CalculateStopingDistance(float agentRadius)
+        //{
+        //    return agentRadius * 2.5f + 0.3f;
+        //}
 
     }
 }

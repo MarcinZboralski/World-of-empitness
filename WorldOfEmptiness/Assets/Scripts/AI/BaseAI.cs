@@ -184,6 +184,206 @@ namespace AI
     [Serializable]
     public struct AIStatistic
     {
-    }
+        #region Global Stats
 
+        private int actualHealth;
+        private int maxHelath;
+        private float timeToNextAttack;
+        private Vector2 randomDemage;
+        private float attackDistance;
+        private float aiMaxSpeed;
+        private int chancheToBlockAttack;
+        private float endHitTime;
+        #endregion
+
+        #region Mele
+
+        private int bleedingDemage;
+        private const float bleedingTime = 1f;
+        private float bleedingTimer;
+        #endregion
+
+        #region Range And MeleAndRange
+
+        private int currentAmmo;
+        private const float demagePerDistance = 0.5f;
+        private int chancheToCounterAttack;
+        #endregion
+
+        #region Hermeted 
+        public int ActualHealth
+        {
+            get
+            {
+                return actualHealth;
+            }
+
+            set
+            {
+                actualHealth = value;
+            }
+        }
+
+        public int MaxHelath
+        {
+            get
+            {
+                return maxHelath;
+            }
+
+            set
+            {
+                maxHelath = value;
+            }
+        }
+
+        public float TimeToNextAttack
+        {
+            get
+            {
+                return timeToNextAttack;
+            }
+
+            set
+            {
+                timeToNextAttack = value;
+            }
+        }
+
+        public Vector2 RandomDemage
+        {
+            get
+            {
+                return randomDemage;
+            }
+
+            set
+            {
+                randomDemage = value;
+            }
+        }
+
+        public float AttackDistance
+        {
+            get
+            {
+                return attackDistance;
+            }
+
+            set
+            {
+                attackDistance = value;
+            }
+        }
+
+        public float AiMaxSpeed
+        {
+            get
+            {
+                return aiMaxSpeed;
+            }
+
+            set
+            {
+                aiMaxSpeed = value;
+            }
+        }
+
+        public int ChancheToBlockAttack
+        {
+            get
+            {
+                return chancheToBlockAttack;
+            }
+
+            set
+            {
+                chancheToBlockAttack = value;
+            }
+        }
+
+        public float EndHitTime
+        {
+            get
+            {
+                return endHitTime;
+            }
+
+            set
+            {
+                endHitTime = value;
+            }
+        }
+
+        public int BleedingDemage
+        {
+            get
+            {
+                return bleedingDemage;
+            }
+
+            set
+            {
+                bleedingDemage = value;
+            }
+        }
+
+        public static float BleedingTime
+        {
+            get
+            {
+                return bleedingTime;
+            }
+        }
+
+        public float BleedingTimer
+        {
+            get
+            {
+                return bleedingTimer;
+            }
+
+            set
+            {
+                bleedingTimer = value;
+            }
+        }
+
+        public int CurrentAmmo
+        {
+            get
+            {
+                return currentAmmo;
+            }
+
+            set
+            {
+                currentAmmo = value;
+            }
+        }
+
+        public static float DemagePerDistance
+        {
+            get
+            {
+                return demagePerDistance;
+            }
+        }
+
+        public int ChancheToCounterAttack
+        {
+            get
+            {
+                return chancheToCounterAttack;
+            }
+
+            set
+            {
+                chancheToCounterAttack = value;
+            }
+        }
+        #endregion
+
+    }
+    
 }
