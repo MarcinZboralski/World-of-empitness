@@ -99,17 +99,17 @@ public class SECTR_Member : MonoBehaviour
 				liveLightmaps = LightmapSettings.lightmapsMode == LightmapsMode.Dual;
 				#else
 				liveLightmaps = true;
-				#endif
+#endif
 
-				#if UNITY_4_0 || UNITY_4_1
+#if UNITY_4_0 || UNITY_4_1
 				shadowLight = this.light && light.shadows != LightShadows.None;
-				#else
-				shadowLight = this.light && light.shadows != LightShadows.None && (!light.alreadyLightmapped || liveLightmaps);
-				#endif
+#else
+
+#endif
 #if UNITY_4
 				rendererCastsShadows = this.renderer && renderer.castShadows && (renderer.lightmapIndex == -1 || liveLightmaps);
 #else
-				rendererCastsShadows = this.renderer && renderer.shadowCastingMode != UnityEngine.Rendering.ShadowCastingMode.Off && (renderer.lightmapIndex == -1 || liveLightmaps);
+                rendererCastsShadows = this.renderer && renderer.shadowCastingMode != UnityEngine.Rendering.ShadowCastingMode.Off && (renderer.lightmapIndex == -1 || liveLightmaps);
 #endif
 				terrainCastsShadows = this.terrain && terrain.castShadows && (terrain.lightmapIndex == -1 || liveLightmaps);
 
@@ -779,12 +779,6 @@ public class SECTR_Member : MonoBehaviour
 			// So we want to ignore them as far as Member's are concerned, but
 			// doing so requires a bit of a hack.
 			// TODO: See if there is such a thing as baked only lights in 5, non-legacy mode.
-			if(bakedOnlyLights != null && 
-				childLight && 
-#if !UNITY_4_0 && !UNITY_4_1
-				childLight.alreadyLightmapped && 
-#endif
-				LightmapSettings.lightmaps.Length > 0)
 			{
 				// Unfortunately, the only way to find out if a light is baked-only is in the Editor,
 				// so we create and store a list of all baked lights.

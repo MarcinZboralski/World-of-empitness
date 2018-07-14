@@ -45,7 +45,7 @@ namespace AI.Editor
             EditorGUILayout.LabelField("Step Height: " + bs.agentClimb);
             EditorGUILayout.Space();
             GUILayout.Label("AI Base Statistic", EditorStyles.boldLabel);
-            EditorGUILayout.LabelField("AI Stop Distance: " + settings.StopDistance);
+          //  EditorGUILayout.LabelField("AI Stop Distance: " + settings.StopDistance);
            // EditorGUILayout.LabelField("AI Maximum Speed: " + settings.AgentMaxSpeed);
 
         }

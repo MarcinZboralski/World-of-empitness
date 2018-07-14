@@ -12,8 +12,6 @@ namespace AI
         public int agentTypeID;
         public Transform Target;
 
-        [NonSerialized] public float StopDistance;
-
         public AIStatistic AiStatistic;
 
         public AISettings(AIType aiType, string name, int agentTypeID, Transform target, AIStatistic aiStatistic)
@@ -27,7 +25,8 @@ namespace AI
 
         public void Init(NavMeshAgent agent)
         {
-    
+            AiStatistic.TimeToNextAttack = 1f;
+            Target = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         //public float CalculateStopingDistance(float agentRadius)

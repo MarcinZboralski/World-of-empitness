@@ -279,11 +279,13 @@ public class SECTR_Chunk : MonoBehaviour
 			cachedSector.DisonnectTerrainNeighbors();
 		}
 #if UNITY_5_LATE
-		Application.UnloadLevel(ScenePath);
+#pragma warning disable CS0618 // Typ lub sk³adowa jest przestarza³a
+        Application.UnloadLevel(ScenePath);
+#pragma warning restore CS0618 // Typ lub sk³adowa jest przestarza³a
 #else
 		GameObject.Destroy(chunkRoot);
 #endif
-		chunkRoot = null;
+        chunkRoot = null;
 		chunkSector = null;
 		recenterChunk = false;
 		if(asyncLoadOp != null)

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 82329572795871558}
   m_Layer: 0
   m_Name: PlayerTest
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379196095329146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4647247580541322}
@@ -279,7 +279,7 @@ MonoBehaviour:
     MinimumX: -90
     MaximumX: 90
     smoothTime: 5
-    camera: {fileID: 4647247580541322}
+    camera: {fileID: 20697934043255408}
 --- !u!124 &124862338146048340
 Behaviour:
   m_ObjectHideFlags: 1

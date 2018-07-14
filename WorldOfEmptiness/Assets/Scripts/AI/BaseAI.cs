@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ namespace AI
         private float distanceToTarget;
         private bool isAttack = false;
         private bool isHited = false;
+        private bool isDeath = false;
         private float timeHit;
         private float timeToAttack;
 
@@ -42,23 +44,54 @@ namespace AI
         {
             Agent = GetComponent<NavMeshAgent>();
             AISettings.Init(Agent);
+            
+            AISettings.AiStatistic.MaxHelath = 10;
+            AISettings.AiStatistic.ActualHealth = AISettings.AiStatistic.MaxHelath;
             Init();
         }
 
         public virtual void Init()
         {
-            Agent.stoppingDistance = AISettings.StopDistance;
+            AISettings.AiStatistic.StopDistance = 1f;
+            Agent.stoppingDistance = AISettings.AiStatistic.StopDistance + (Agent.radius * 2.85f + 0.4f);
+
+            timeHit = AISettings.AiStatistic.TimeToNextAttack;
+            timeToAttack = AISettings.AiStatistic.TimeToNextAttack;
+
+
+
+
+            switch (AISettings.AiType)
+            {
+                case AIType.Melee:
+
+                    break;
+                case AIType.Ranged:
+
+                    break;
+                case AIType.MeleeAndRanged:
+
+                    break;
+            }
         }
 
         private void Update()
         {
-            Move(AISettings.Target.position);
+            if (AISettings.AiStatistic.ActualHealth <= 0)
+            {
+                Destroy(gameObject);
+                isDeath = true;
+            }
 
+            if(Input.GetKeyDown(KeyCode.G)){GetHit(1);}
+            UseAI(AISettings.Target.position);
         }
 
-        protected void Move(Vector3 Target)
+        protected void UseAI(Vector3 Target)
         {
-            if (NavMeshGeneratorAdapter.IsDone == false) return;
+
+            if(isDeath == true)return;
+          //  if (NavMeshGeneratorAdapter.IsDone == false) return;
 
             distanceToTarget = Vector3.Distance(Target, transform.position);
 
@@ -68,14 +101,20 @@ namespace AI
 
                     if (isHited == false)
                     {
-                        Agent.isStopped = false;
-                        if (distanceToTarget >= AISettings.StopDistance)
+                        timeHit = AISettings.AiStatistic.TimeToNextAttack;
+                        if (distanceToTarget >Agent.stoppingDistance)
                         {
+                            timeToAttack = AISettings.AiStatistic.TimeToNextAttack;
+                            isAttack = false;
+                            Agent.isStopped = false;
+                            print("Move");
                             SetAnimatror(true, false, false, false);
                             Agent.SetDestination(Target);
                         }
-                        else if (isAttack == false && timeToAttack > 0 && Agent.remainingDistance <= distanceToTarget)
+                        else
                         {
+                          //  transform.rotation = Quaternion.Euler(0, AISettings.Target.transform.rotation.eulerAngles.y, 0);
+                            print("COMING");
                             SetAnimatror(false, true, false, false);
                             Agent.isStopped = true;
                             timeToAttack -= Time.smoothDeltaTime;
@@ -83,11 +122,11 @@ namespace AI
                             {
                                 Attack();
                             }
-
                         }
                     }
                     else
                     {
+                        print("Is hit");
                         Agent.isStopped = true;
                         if (timeHit > 0)
                         {
@@ -98,7 +137,6 @@ namespace AI
                         {
                             EndHit();
                         }
-
                     }
 
 
@@ -111,31 +149,26 @@ namespace AI
 
         }
 
-        private void Attack()
+        private void Death()
         {
-            if (isAttack == false)
-            {
-                switch (AISettings.AiType)
-                {
-                    case AIType.Melee:
 
-                        break;
-                    case AIType.Ranged:
-
-                        break;
-                    case AIType.MeleeAndRanged:
-
-                        break;
-                }
-                isAttack = true;
-                Agent.isStopped = false;
-            }
         }
 
-        public void GetHit()
+        private void Attack()
+        {
+            print("Is Attack");
+            timeToAttack = AISettings.AiStatistic.TimeToNextAttack;
+            isAttack = true;
+            Agent.isStopped = false;
+            isAttack = false;
+        }
+
+        public void GetHit(int demage)
         {
             if (isHited == false)
             {
+                print("Hit");
+                AISettings.AiStatistic.ActualHealth -= demage;
                 isHited = true;
                 SetAnimatror(false, false, false, true);
             }
@@ -146,6 +179,8 @@ namespace AI
             if (isHited)
             {
                 isHited = false;
+                timeHit = AISettings.AiStatistic.TimeToNextAttack;
+                print("EndHit");
             }
         }
 
@@ -194,6 +229,7 @@ namespace AI
         private float aiMaxSpeed;
         private int chancheToBlockAttack;
         private float endHitTime;
+        private float stopDistance;
         #endregion
 
         #region Mele
@@ -208,6 +244,7 @@ namespace AI
         private int currentAmmo;
         private const float demagePerDistance = 0.5f;
         private int chancheToCounterAttack;
+        private float rangeStopDistance;
         #endregion
 
         #region Hermeted 
@@ -380,6 +417,32 @@ namespace AI
             set
             {
                 chancheToCounterAttack = value;
+            }
+        }
+
+        public float StopDistance
+        {
+            get
+            {
+                return stopDistance;
+            }
+
+            set
+            {
+                stopDistance = value;
+            }
+        }
+
+        public float RangeStopDistance
+        {
+            get
+            {
+                return rangeStopDistance;
+            }
+
+            set
+            {
+                rangeStopDistance = value;
             }
         }
         #endregion
