@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 4729609262908122}
   - component: {fileID: 114082358288710490}
   m_Layer: 9
-  m_Name: Room_Frst_Curv90_side2c
+  m_Name: Room_Castle_Curv90_side2c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9792,7 +9792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a188f8ee195cf4cb8b2fdccd193b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SocketGroup: 3
+  SocketGroup: 6
   DoorPrefabPriority: 0
   DoorPrefabs: []
   BlockerPrefabs: []

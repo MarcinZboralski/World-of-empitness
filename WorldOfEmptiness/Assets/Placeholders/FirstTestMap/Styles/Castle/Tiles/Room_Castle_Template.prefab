@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4846696028231140}
   - component: {fileID: 114791413470430034}
   m_Layer: 0
-  m_Name: Room_Frst_Template
+  m_Name: Room_Castle_Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

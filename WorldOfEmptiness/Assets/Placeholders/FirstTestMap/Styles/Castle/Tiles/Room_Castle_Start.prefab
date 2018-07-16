@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 4510224769952938}
   - component: {fileID: 114335693482646874}
   m_Layer: 9
-  m_Name: Room_Frst_Start
+  m_Name: Room_Castle_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

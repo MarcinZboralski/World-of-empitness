@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89377a5c2dcb66b40af385ad8492cda9, type: 3}
-  m_Name: Archetype_FirstTest
+  m_Name: Archetype_Castle
   m_EditorClassIdentifier: 
   TileSets:
   - {fileID: 11400000, guid: e5b7a6a752c62a54494bc14a2dbc68ff, type: 2}
